@@ -1,0 +1,12 @@
+module decode38FA(A,B,Ci,S,Co);
+	input A,B,Ci;
+	output S,Co;
+	wire [2:0] X={A,B,Ci};
+	wire [7:0] Y;
+	
+	decode74ls138 (X,Y);
+	
+	nand n1(S,Y[1],Y[2],Y[4],Y[7]);
+	nand n2(Co,Y[3],Y[5],Y[6],Y[7]);
+	
+endmodule
